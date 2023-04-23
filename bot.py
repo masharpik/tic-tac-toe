@@ -120,6 +120,9 @@ class TicTacToeBot:
                     if checked:
                         await call.message.answer_photo(photo=InputFile(curr_filename))
                         await call.message.answer(texts["end_game"]["lose"])
+                    elif len(self.free_fields) == 0:
+                        await call.message.answer_photo(photo=InputFile(curr_filename))
+                        await call.message.answer(texts["end_game"]["tie"])
                     else:
                         keyboard = types.InlineKeyboardMarkup(resize_keyboard=True)
                         keyboard.add(
